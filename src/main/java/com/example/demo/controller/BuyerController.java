@@ -75,10 +75,10 @@ public class BuyerController {
 		if(u == null) {
 			return new ResponseEntity<Buyer>(u, HttpStatus.FORBIDDEN);
 		}
-		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"); 
+		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/YYYY @ HH:mm:ss"); 
 		 LocalDateTime now = LocalDateTime.now();  
 		 String updateInfoLink = "http://timestoreproject.s3-website.us-east-2.amazonaws.com/update";
-		triggerMail(u.getEmail(),"Dear "+u.getFirst()+" "+u.getLast()+",\n"+"logged at this time: "+dtf.format(now)+"\nif it was not you please update your password: @ "+updateInfoLink,"Time Store Security login");
+		triggerMail(u.getEmail(),"Dear "+u.getFirst()+" "+u.getLast()+",\n"+"logged in at this time: "+dtf.format(now)+"\nif it was not you please update your password: @ "+updateInfoLink,"Time Store Security login");
 		return new ResponseEntity<Buyer>(u, HttpStatus.OK);
 	}
 	//I can change this to find user by id if needed
