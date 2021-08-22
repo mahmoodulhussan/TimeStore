@@ -7,26 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Watch;
-import com.example.demo.repos.BuyerRepo;
 import com.example.demo.repos.WatchRepository;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Service
-@NoArgsConstructor
-@AllArgsConstructor(onConstructor=@__(@Autowired))
-
 public class WatchService {
+	private final WatchRepository watchRepository;
 	
-	private  WatchRepository watchRepository;
+	@Autowired
+	public WatchService(WatchRepository watchRepository) {
+		this.watchRepository = watchRepository;
+	}
 	
-	
-
-
-	
-	
-	public List<Watch> getWatches(){
+	public List<Watch> getWatchs(){
 		return watchRepository.findAll();
 	}
 	
@@ -34,11 +26,20 @@ public class WatchService {
 		return watchRepository.getById(id);
 	}
 	
-	public void addNewWatches(List<Watch>  watches) {
-
-		watchRepository.saveAll(watches);
+	public void addNewWatch(Watch watch) {
+		Optional<Watch> watchOptional = watchRepository.findByDiscription(watch.getDiscription());
+		if(watchOptional.isPresent()) {
+			throw new IllegalStateException("watch already exists");
+		}
+		watchRepository.save(watch);
 	}
-
-
+	
+	public void deleteWatch(Integer watchid) {
+		boolean exists = watchRepository.existsById(watchid);
+		if(!exists) {
+			throw new IllegalStateException("watch doesn't exist");
+		}
+		watchRepository.deleteById(watchid);
+	}
 
 }

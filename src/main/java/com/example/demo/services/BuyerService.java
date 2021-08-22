@@ -32,9 +32,6 @@ public class BuyerService {
 	}
 	
 	public Buyer loginUser(String email, String password) {
-		
-		
-		
 		//findByUsername will return null if the user does not exist
 		Buyer u = uDao.findByEmail(email);
 		//If username does not exist return null
@@ -73,56 +70,5 @@ public class BuyerService {
 
         return u.getOrdersList();
     }
-	
-	
-	
-	public Buyer updateBuyer(int buyerid, String newemail, String newpass) {
-	   Buyer buyer = uDao.findById(buyerid);
-	    // crush the variables of the object found
-	  if (buyer ==null) {
-		return null;
-	} else {
-
-		if (!newemail.equals("")) {
-			
-				buyer.setEmail(newemail);
-		}
-		
-		if (!newpass.equals("")) {
-			
-			  buyer.setPass(newpass);
-	}
-	
-	
-		 
-		   
-		  return  uDao.save(buyer);
-		  
-		
-		
-		
-	}
-	   
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
