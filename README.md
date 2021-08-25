@@ -14,4 +14,4 @@
 
 - Jenkins pipeline was used to automate the deployment process of this web application. An AWS EC2 instance was used to store the back-end and run the web server. Front-end was hosted on an AWS S3 bucket. 
 
-<img src='fe_img_1.jpg'/>
+<img src='./fe_img_1.JPG'/>
