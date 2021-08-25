@@ -1,0 +1,45 @@
+<h1 class="mx-auto row col-12 justify-content-center text-center p-5 Lato " style="width: 620px">WELCOME TO TIME-STORE</h1>    
+
+<!-- <div   *ngFor="let order of (orders| async)"    > 
+    
+
+
+
+
+</div> -->
+
+
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-body shadow">
+<table class="table table-striped w-auto border">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+         
+            <th>Order Number</th>
+            <th>Watch Brand</th>
+            <th>Watch Price</th>
+            <th>Watch Description</th>
+           
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+        <tr class="table-info"   *ngFor="let order of (orders| async)"   >
+            <th scope="row">{{order.orderId}}</th>
+            <td>{{order.watchorderholder.brand}}</td>
+            <td>{{order.watchorderholder.price}}</td>
+            <td>{{order.watchorderholder.discription}}</td>
+            
+        </tr>
+       
+    </tbody>
+    <!--Table body-->
+
+
+</table>
