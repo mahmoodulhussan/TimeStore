@@ -4,7 +4,7 @@
 
 ## Front End Technologies Used:
 
-- Angular, HTML, CSS, Bootstrap, Awesome Fonts
+- Angular, HTML, CSS, Bootstrap, Font Awesome.
 
 ## Back End Technologies Used:
 
